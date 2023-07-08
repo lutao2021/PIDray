@@ -50,11 +50,19 @@
 
 
 
-### Download
+### Dataset Download
 
-Google Drive: Coming soon...
+Google Drive: https://drive.google.com/drive/folders/1zvMIc1bqteRN9Z36hHYpoTGoZArsh4mE
 
-Baidu Netdisk : Coming soon...
+Baidu Netdisk: https://pan.baidu.com/s/1qPUNWYItg08pht0kFn8qxg  code: 8vz6
+
+
+
+### Model weights
+
+Google Drive: https://drive.google.com/drive/folders/1zvMIc1bqteRN9Z36hHYpoTGoZArsh4mE
+
+Baidu Netdisk: https://pan.baidu.com/s/1JHmMIIf_SoQ7o1HsneT_tg  code: brkx
 
 
 
@@ -70,7 +78,33 @@ Baidu Netdisk : Coming soon...
 
 <img src="./docs/multilabel_result.jpg" style="zoom:50%;" />
 
-## Code
 
-Coming soon...
 
+## Installation
+
+Our code is based on mmdetection V2.25. We recommend you to follow their instruction to build the environment. We also provide the *requirements.txt* of our environment.
+
+
+
+## Reproduce Our Results
+
+1. Change the data path in the director, *configs*.
+
+2. Train the model use the command. We also provide our model_weights.
+
+   ```bash
+   CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 sh ./tools/dist_train.sh ./configs/cascade_mask_rcnn_r101_with_R0R1.py 8
+   
+   ```
+
+3. Test the model use the commad.
+
+   ```bash
+   CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 sh ./tools/dist_test.sh ./configs/cascade_mask_rcnn_r101_with_R0R1.py ./model_weights/cascade_mask_rcnn_r101_with_R0R1.pth 8 --out ./result.pkl --eval bbox segm
+   ```
+
+
+
+## Acknowledgments
+
+We sincerely thank [mmdetection](https://github.com/open-mmlab/mmdetection) for being open source.  We also greatly thank the anounymous reviewers for the constructive comments to help us improve the paper.
